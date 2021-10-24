@@ -1,7 +1,7 @@
 import React from "react";
 
-const DrumControl = () => {
-  return <div>DrumControl</div>;
+const DrumControl = ({ displayValue }) => {
+  return <div id="display">{displayValue}</div>;
 };
 
 export default DrumControl;

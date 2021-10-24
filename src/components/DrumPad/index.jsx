@@ -1,31 +1,39 @@
-import React, { useEffect, useCallback, useMemo } from "react";
+import React, { useEffect, useCallback, useRef } from "react";
 
-const DrumPad = ({ keyData }) => {
-  const keyAudio = useMemo(() => new Audio(keyData.src), [keyData]);
+const DrumPad = ({ keyData, updateDisplay }) => {
+  const audio = useRef(null);
   const playAudio = useCallback(() => {
-    console.log("Hit Key: " + keyData.keyCode);
-    keyAudio.currentTime = 0;
-    keyAudio.play();
-  }, [keyAudio, keyData]);
+    audio.current.currentTime = 0;
+    audio.current.play();
+  }, []);
 
   useEffect(() => {
     document.addEventListener("keydown", (event) => {
       if (event.code === keyData.keyCode) {
+        updateDisplay(keyData.name);
         playAudio();
       }
     });
     return () => {
       document.removeEventListener("keydown", (event) => {
         if (event.code === keyData.keyCode) {
+          updateDisplay(keyData.name);
           playAudio();
         }
       });
     };
-  }, [keyData, playAudio]);
+  }, [keyData, playAudio, updateDisplay]);
 
   return (
-    <div id={keyData.name} className="drum-pad" onClick={playAudio}>
-      <audio className="clip" id={keyData.key} src={keyData.src} />
+    <div
+      id={keyData.name}
+      className="drum-pad"
+      onClick={(event) => {
+        playAudio(event);
+        updateDisplay(keyData.name);
+      }}
+    >
+      <audio ref={audio} className="clip" id={keyData.key} src={keyData.src} />
       {keyData.key}
     </div>
   );
