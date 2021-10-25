@@ -9,6 +9,13 @@ body {
   background: #202c37;
 }
 
+p {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
 .container {
   min-height: 100vh;
   width: 100vw;
@@ -24,16 +31,14 @@ body {
 }
 
 .inner-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: -ms-grid;
+  display: grid;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -42,7 +47,21 @@ body {
   background: #2b3945;
   padding: 2rem;
   border: 1px solid black;
-  gap: 1rem;
+  gap: 2rem;
+}
+
+@media (min-width: 500px) {
+  .inner-container {
+    width: 400px;
+  }
+}
+
+@media (min-width: 700px) {
+  .inner-container {
+    width: 600px;
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .drumPadContainer {
@@ -86,10 +105,43 @@ body {
 }
 
 .drum-pad:hover {
-  background: #101519;
+  background: #101519 !important;
 }
 
-.drum-pad .active {
-  background: #101519;
+.display {
+  background: #172026;
+  width: 80%;
+  height: 50px;
+  padding: 1rem;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.drum-control-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.volume-slider {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 80%;
+  border-radius: 5px;
+  background: #172026;
+  height: 12px;
+  outline: none;
 }
 /*# sourceMappingURL=styles.css.map */

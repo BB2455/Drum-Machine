@@ -8,6 +8,10 @@ body {
   background: hsl(207, 26%, 17%);
 }
 
+p {
+  user-select: none;
+}
+
 .container {
   min-height: 100vh;
   width: 100vw;
@@ -17,16 +21,23 @@ body {
 }
 
 .inner-container {
-  display: flex;
+  display: grid;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   width: 90%;
   color: hsl(0, 0%, 100%);
   background: hsl(209, 23%, 22%);
   padding: 2rem;
   border: 1px solid black;
-  gap: 1rem;
+  gap: 2rem;
+  @media (min-width: 500px) {
+    width: 400px;
+  }
+  @media (min-width: 700px) {
+    width: 600px;
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .drumPadContainer {
@@ -53,9 +64,33 @@ body {
   cursor: pointer;
   box-shadow: 1px 2px 3px black;
   &:hover {
-    background: hsl(204, 24%, 8%);
+    background: hsl(204, 24%, 8%) !important;
   }
-  .active {
-    background: hsl(204, 24%, 8%);
-  }
+}
+
+.display {
+  background: hsl(204, 25%, 12%);
+  width: 80%;
+  height: 50px;
+  padding: 1rem;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.drum-control-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.volume-slider {
+  appearance: none;
+  width: 80%;
+  border-radius: 5px;
+  background: hsl(204, 25%, 12%);
+  height: 12px;
+  outline: none;
 }

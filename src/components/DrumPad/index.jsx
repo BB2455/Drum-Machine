@@ -1,13 +1,18 @@
 import React, { useEffect, useCallback, useRef } from "react";
 
-const DrumPad = ({ keyData, updateDisplay }) => {
+const DrumPad = ({ keyData, updateDisplay, volume }) => {
   const audio = useRef(null);
   const drumButton = useRef(null);
   const playAudio = useCallback(() => {
     audio.current.currentTime = 0;
+    audio.current.volume = volume;
     audio.current.play();
-    drumButton.current.toggleAttribute("active");
-  }, []);
+    drumButton.current.style.background = "hsl(204, 24%, 8%)";
+    setTimeout(
+      () => (drumButton.current.style.background = "hsl(204, 25%, 12%)"),
+      200
+    );
+  }, [volume]);
 
   useEffect(() => {
     document.addEventListener("keydown", (event) => {
