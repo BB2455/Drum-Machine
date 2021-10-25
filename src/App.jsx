@@ -6,7 +6,7 @@ import React, { useState, useCallback } from "react";
 
 function App() {
   const [currentValue, setCurrentValue] = useState("");
-  const [volume, setVolume] = useState(0.23);
+  const [volume, setVolume] = useState(0.5);
 
   const clearDisplay = () => {
     setCurrentValue("");
