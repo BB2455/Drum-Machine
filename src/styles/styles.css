@@ -31,6 +31,12 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 90%;
   color: white;
   background: #2b3945;
@@ -42,7 +48,48 @@ body {
 .drumPadContainer {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (auto)[3];
-      grid-template-columns: repeat(3, auto);
+  -ms-grid-columns: (75px)[3];
+      grid-template-columns: repeat(3, 75px);
+  gap: 0.5rem;
+}
+
+.drum-pad-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.drum-pad {
+  background: #172026;
+  font-size: 1rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  -webkit-box-shadow: 1px 2px 3px black;
+          box-shadow: 1px 2px 3px black;
+}
+
+.drum-pad:hover {
+  background: #101519;
+}
+
+.drum-pad .active {
+  background: #101519;
 }
 /*# sourceMappingURL=styles.css.map */

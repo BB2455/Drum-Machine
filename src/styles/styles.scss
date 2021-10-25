@@ -19,6 +19,8 @@ body {
 .inner-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 90%;
   color: hsl(0, 0%, 100%);
   background: hsl(209, 23%, 22%);
@@ -29,5 +31,31 @@ body {
 
 .drumPadContainer {
   display: grid;
-  grid-template-columns: repeat(3, auto);
+  grid-template-columns: repeat(3, 75px);
+  gap: 0.5rem;
+}
+
+.drum-pad-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.drum-pad {
+  background: hsl(204, 25%, 12%);
+  font-size: 1rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 1px 2px 3px black;
+  &:hover {
+    background: hsl(204, 24%, 8%);
+  }
+  .active {
+    background: hsl(204, 24%, 8%);
+  }
 }
